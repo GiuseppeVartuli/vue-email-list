@@ -19,7 +19,7 @@ export default {
 </script>
 
 <template>
-  <div class="list">
+  <div>
     <ol>
       <li v-for="mail in mails">
         {{ mails }}
