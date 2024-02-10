@@ -4,16 +4,19 @@ export default {
   name: "App",
   data() {
     return {
-      mails: "",
+      mails: [],
     };
   },
+
   mounted() {
-    axios
-      .get("https://flynn.boolean.careers/exercises/api/random/mail")
-      .then((response) => {
-        console.log(response);
-        this.mails = response.data.response;
-      });
+    for (let i = 0; i < 10; i++) {
+      axios
+        .get("https://flynn.boolean.careers/exercises/api/random/mail")
+        .then((response) => {
+          console.log(response);
+          this.mails.push(response.data.response);
+        });
+    }
   },
 };
 </script>
@@ -21,9 +24,7 @@ export default {
 <template>
   <div>
     <ol>
-      <li v-for="mail in mails">
-        {{ mails }}
-      </li>
+      <li v-for="mail in mails">{{ mail }}</li>
     </ol>
   </div>
 </template>
